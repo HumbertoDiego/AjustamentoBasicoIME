@@ -2,7 +2,16 @@
 
 Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Curso de Engenharia Cartográfica do Instituto Militar de Engenharia - Rio de Janeiro/RJ
 
-[Aula 1](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_I_e_II.ipynb): Medidas, observações, incerteza, precisão, acurácia, método dos mínimos quadrados (MMQ), erros e resíduos.
+- [Semana 1](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_I_e_II.ipynb): Medidas, observações, incerteza, precisão, acurácia, método dos mínimos quadrados (MMQ), erros e resíduos.
 
-[Aula 2](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_III.ipynb): Propagação de erros
+- [Semana 2](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_III.ipynb): Propagação de erros das observações para o(s) modelo/parâmetros ajustado(s)
 
+- [Semana 3](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_IV.ipynb): Sistemas mal condicionados e como contorná-los
+
+- [Semana 4](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_V.ipynb): MMQ com observações ponderadas
+
+- [Semana 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI.ipynb): Aprofundamento no MMQ - modelo paramétrico
+
+- [Semana 6](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_2.ipynb): Aprofundamento no MMQ - modelo condicionado
+
+- [Semana 7](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_3.ipynb): Aprofundamento no MMQ - modelo combinado
