@@ -10,7 +10,7 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Cu
 
 - [Semana 4](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_V.ipynb): MMQ com observações ponderadas
 
-- [Semana 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI.ipynb): Aprofundamento no MMQ - modelo paramétrico
+- [Semana 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_1.ipynb): Aprofundamento no MMQ - modelo paramétrico
 
 - [Semana 6](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_2.ipynb): Aprofundamento no MMQ - modelo condicionado
 
