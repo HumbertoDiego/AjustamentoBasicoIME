@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teste Qui-Quadrado Bicaudal - Guia Interativo</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- MathJax para fórmulas matemáticas bonitas -->
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 min-h-screen">
+
+    <!-- Header -->
+    <header class="bg-gradient-to-r from-indigo-700 to-violet-800 text-white shadow-md">
+        <div class="max-width-7xl mx-auto px-4 py-6 md:px-8 flex flex-col md:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="bg-indigo-500/30 text-indigo-200 text-xs font-semibold px-2.5 py-1 rounded-full uppercase tracking-wider">Estatística Inferencial</span>
+                <h1 class="text-2xl md:text-3xl font-extrabold mt-1 tracking-tight">O Teste Qui-Quadrado Bicaudal</h1>
+                <p class="text-indigo-200 text-sm mt-1">Entenda visualmente as regiões críticas, hipóteses e fórmulas aplicadas.</p>
+            </div>
+            <div class="bg-white/10 backdrop-blur-sm rounded-lg p-3 text-right text-xs md:text-sm border border-white/10">
+                <p class="font-medium text-white">Quando ocorre?</p>
+                <p class="text-indigo-200">Principalmente no teste de hipóteses para a <span class="font-bold underline decoration-indigo-400">Variância</span> (\(\sigma^2\)).</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto px-4 py-8 md:px-8 grid grid-cols-1 lg:grid-cols-12 gap-8">
+        
+        <!-- COLUNA DA ESQUERDA: SIMULADOR INTERATIVO -->
+        <section class="lg:col-span-7 bg-white rounded-2xl shadow-sm border border-slate-100 p-6 flex flex-col gap-6">
+            <div class="border-b border-slate-100 pb-4">
+                <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    Gráfico Interativo da Distribuição \(\chi^2\)
+                </h2>
+                <p class="text-slate-500 text-xs mt-1">Ajuste os controles abaixo para recalcular as regiões críticas em tempo real.</p>
+            </div>
+
+            <!-- Controles -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-4 rounded-xl border border-slate-100">
+                <!-- Tipo de Teste -->
+                <div>
+                    <label class="block text-xs font-semibold text-slate-600 uppercase mb-2">Tipo de Cauda</label>
+                    <div class="flex rounded-md shadow-sm">
+                        <button id="btnBicaudal" class="w-1/2 px-3 py-2 text-xs font-medium rounded-l-md bg-indigo-600 text-white focus:outline-none transition-colors">
+                            Bicaudal (Duas)
+                        </button>
+                        <button id="btnUnicaudal" class="w-1/2 px-3 py-2 text-xs font-medium rounded-r-md bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 focus:outline-none transition-colors">
+                            Unicaudal Dir.
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Graus de Liberdade -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label for="rangeGL" class="text-xs font-semibold text-slate-600 uppercase">Graus de Liberdade (gl)</label>
+                        <span id="valGL" class="text-xs font-bold bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded">10</span>
+                    </div>
+                    <input type="range" id="rangeGL" min="2" max="30" value="10" class="w-full accent-indigo-600 cursor-pointer h-2 bg-slate-200 rounded-lg appearance-none">
+                    <p class="text-[10px] text-slate-400 mt-1">Tamanho da amostra menos 1 (\(n-1\))</p>
+                </div>
+
+                <!-- Nível de Significância -->
+                <div>
+                    <div class="flex justify-between items-center mb-1">
+                        <label for="rangeAlpha" class="text-xs font-semibold text-slate-600 uppercase">Significância (\(\alpha\))</label>
+                        <span id="valAlpha" class="text-xs font-bold bg-indigo-100 text-indigo-800 px-2 py-0.5 rounded">5%</span>
+                    </div>
+                    <input type="range" id="rangeAlpha" min="1" max="20" value="5" class="w-full accent-indigo-600 cursor-pointer h-2 bg-slate-200 rounded-lg appearance-none">
+                    <p class="text-[10px] text-slate-400 mt-1">Probabilidade de Erro Tipo I</p>
+                </div>
+            </div>
+
+            <!-- Canvas para o gráfico -->
+            <div class="relative w-full h-[320px] bg-slate-50 rounded-xl p-2 border border-slate-100 flex items-center justify-center">
+                <canvas id="chartChi2"></canvas>
+            </div>
+
+            <!-- Dados Calculados -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Região Crítica Inferior -->
+                <div id="cardCritInf" class="bg-red-50/50 border border-red-100 rounded-xl p-4">
+                    <span class="text-[10px] font-bold uppercase tracking-wider text-red-600">Região Crítica Inferior (Esquerda)</span>
+                    <div class="flex justify-between items-baseline mt-1">
+                        <span class="text-2xl font-black text-red-700" id="valCritInf">3.25</span>
+                        <span class="text-xs text-red-500 font-medium" id="lblCritInfArea">\(\alpha/2 = 2.5\%\)</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Valores abaixo deste ponto rejeitam a hipótese nula (\(H_0\)).</p>
+                </div>
+
+                <!-- Região Crítica Superior -->
+                <div class="bg-red-50/50 border border-red-100 rounded-xl p-4">
+                    <span id="lblCritSupTitle" class="text-[10px] font-bold uppercase tracking-wider text-red-600">Região Crítica Superior (Direita)</span>
+                    <div class="flex justify-between items-baseline mt-1">
+                        <span class="text-2xl font-black text-red-700" id="valCritSup">20.48</span>
+                        <span class="text-xs text-red-500 font-medium" id="lblCritSupArea">\(\alpha/2 = 2.5\%\)</span>
+                    </div>
+                    <p class="text-xs text-slate-500 mt-2">Valores acima deste ponto rejeitam a hipótese nula (\(H_0\)).</p>
+                </div>
+            </div>
+
+            <!-- Simulador de Estatística de Teste -->
+            <div class="bg-indigo-50/40 border border-indigo-100 rounded-xl p-4">
+                <h3 class="text-sm font-bold text-indigo-900 mb-3 flex items-center gap-2">
+                    <span class="flex h-2 w-2 relative">
+                        <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                        <span class="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                    </span>
+                    Simulador de Decisão em Tempo Real
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 items-center">
+                    <div>
+                        <label for="inputEstCalculada" class="block text-xs font-semibold text-slate-600 uppercase mb-1">Seu valor Qui-Quadrado Calculado (\(\chi^2_{calc}\))</label>
+                        <div class="relative rounded-md shadow-sm">
+                            <input type="number" id="inputEstCalculada" step="0.1" value="12.5" class="w-full px-3 py-2 bg-white border border-slate-200 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 text-sm font-bold text-slate-800">
+                        </div>
+                    </div>
+                    <div id="statusDecisao" class="p-3 rounded-lg text-center flex flex-col justify-center h-full">
+                        <span class="text-[10px] font-bold uppercase tracking-wider" id="statusHeader">Decisão do Teste</span>
+                        <span class="text-lg font-extrabold mt-0.5" id="statusMain">Aceita H₀</span>
+                        <span class="text-xs font-medium" id="statusDesc">O valor está na zona de aceitação</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COLUNA DA DIREITA: EXPLICAÇÃO COMPLETA -->
+        <section class="lg:col-span-5 flex flex-col gap-6">
+            
+            <!-- Card 1: Diferença Unicaudal vs Bicaudal -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                <h2 class="text-lg font-bold text-slate-900 mb-3 border-b border-slate-100 pb-3 flex items-center gap-2">
+                    <svg class="w-5 h-5 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    Por que o teste bicaudal é especial?
+                </h2>
+                <div class="text-sm text-slate-600 space-y-3 leading-relaxed">
+                    <p>
+                        Diferente do teste Qui-Quadrado clássico de <span class="font-semibold text-slate-800">Aderência ou Independência</span> (que é sempre <strong>unicaudal à direita</strong>), o teste para <strong>variância de uma única população</strong> pode ser bicaudal.
+                    </p>
+                    <p class="bg-slate-50 p-3 rounded-lg border-l-4 border-indigo-500 text-xs italic">
+                        "Queremos testar se a variância de um processo é exatamente igual a um valor padrão (\(\sigma_0^2\)). Se for muito maior ou muito menor, rejeitamos a estabilidade."
+                    </p>
+                    <ul class="list-disc list-inside space-y-1.5 mt-2 pl-2">
+                        <li><strong>Unicaudal à direita:</strong> Procuramos apenas se a discrepância (ou variabilidade) é <em>anormalmente grande</em>.</li>
+                        <li><strong>Bicaudal:</strong> Procuramos se a variabilidade é <em>anormalmente grande</em> <strong>OU</strong> <em>anormalmente pequena</em> (perfeita demais).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Card 2: Definição de Hipóteses -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                <h2 class="text-lg font-bold text-slate-900 mb-3 border-b border-slate-100 pb-3">Formulação de Hipóteses</h2>
+                <div class="space-y-4">
+                    <!-- Fórmulas LaTeX -->
+                    <div class="bg-indigo-50/30 p-4 rounded-xl text-center border border-indigo-50/50">
+                        <div class="text-slate-800 text-sm md:text-base">
+                            $$H_0: \sigma^2 = \sigma_0^2$$
+                            $$H_1: \sigma^2 \neq \sigma_0^2 \quad \text{(Bicaudal)}$$
+                        </div>
+                    </div>
+                    <div class="text-xs text-slate-500 space-y-2">
+                        <p><strong class="text-slate-700">\(H_0\) (Hipótese Nula):</strong> A variância populacional verdadeira (\(\sigma^2\)) é igual ao valor hipotético (\(\sigma_0^2\)).</p>
+                        <p><strong class="text-slate-700">\(H_1\) (Hipótese Alternativa):</strong> A variância populacional verdadeira é diferente de (\(\sigma_0^2\)).</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 3: Como Calcular a Estatística de Teste -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                <h2 class="text-lg font-bold text-slate-900 mb-3 border-b border-slate-100 pb-3">Estatística do Teste (\(\chi^2_{calc}\))</h2>
+                <div class="space-y-3">
+                    <p class="text-sm text-slate-600">Calculamos o valor Qui-Quadrado amostral com a fórmula:</p>
+                    <div class="bg-indigo-50/30 p-4 rounded-xl text-center border border-indigo-50/50">
+                        <div class="text-slate-800 text-base md:text-lg">
+                            $$\chi^2_{calc} = \frac{(n-1)s^2}{\sigma_0^2}$$
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-2 text-[11px] text-slate-500 pt-2">
+                        <div><strong>\(n\):</strong> Tamanho da amostra</div>
+                        <div><strong>\(s^2\):</strong> Variância amostral</div>
+                        <div><strong>\(\sigma_0^2\):</strong> Variância sob \(H_0\)</div>
+                        <div><strong>\(gl = n-1\):</strong> Graus de liberdade</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Card 4: Passo a Passo Prático -->
+            <div class="bg-white rounded-2xl shadow-sm border border-slate-100 p-6">
+                <h2 class="text-lg font-bold text-slate-900 mb-4 border-b border-slate-100 pb-3">Passo a Passo da Decisão</h2>
+                <ol class="space-y-4">
+                    <li class="flex gap-3">
+                        <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 bg-indigo-100 text-indigo-800 rounded-full font-bold text-xs">1</span>
+                        <div>
+                            <h4 class="text-sm font-semibold text-slate-800">Divida a significância (\(\alpha\)) por 2</h4>
+                            <p class="text-xs text-slate-500">Como é bicaudal, cada cauda acumula \(\alpha/2\) de probabilidade. (Ex: se \(\alpha = 5\%\), cada ponta terá \(2.5\%\)).</p>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 bg-indigo-100 text-indigo-800 rounded-full font-bold text-xs">2</span>
+                        <div>
+                            <h4 class="text-sm font-semibold text-slate-800">Encontre os dois valores críticos</h4>
+                            <p class="text-xs text-slate-500">Consulte a tabela Qui-Quadrado com \(gl = n-1\):</p>
+                            <ul class="list-disc list-inside text-xs text-slate-500 mt-1 space-y-0.5">
+                                <li>Ponto crítico inferior: \(\chi^2_{1-\alpha/2, gl}\)</li>
+                                <li>Ponto crítico superior: \(\chi^2_{\alpha/2, gl}\)</li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="flex gap-3">
+                        <span class="flex-shrink-0 flex items-center justify-center w-6 h-6 bg-indigo-100 text-indigo-800 rounded-full font-bold text-xs">3</span>
+                        <div>
+                            <h4 class="text-sm font-semibold text-slate-800">Compare com \(\chi^2_{calc}\)</h4>
+                            <p class="text-xs text-slate-500">Rejeite \(H_0\) se seu valor estiver fora dos limites (muito à esquerda ou muito à direita).</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            
+        </section>
+    </main>
+
+    <footer class="bg-slate-950 text-slate-400 py-8 mt-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 md:px-8 text-center text-xs space-y-2">
+            <p>Guia Visual do Teste Qui-Quadrado Bicaudal © 2026.</p>
+            <p>Desenvolvido para fins didáticos e científicos com cálculos estatísticos baseados na aproximação Wilson-Hilferty.</p>
+        </div>
+    </footer>
+
+    <!-- Script de controle e desenho do gráfico -->
+    <script>
+        // --- FUNÇÕES ESTATÍSTICAS EM JAVASCRIPT ---
+
+        // Função Gamma aproximada por Lanczos
+        function gamma(z) {
+            const g = 7;
+            const p = [
+                0.99999999999980993, 676.5203681218851, -1259.1392167224028,
+                771.32342877765313, -176.61502916214059, 12.507381421290417,
+                -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7
+            ];
+            if (z < 0.5) return Math.PI / (Math.sin(Math.PI * z) * gamma(1 - z));
+            z -= 1;
+            let x = p[0];
+            for (let i = 1; i < g + 2; i++) {
+                x += p[i] / (z + i);
+            }
+            let t = z + g + 0.5;
+            return Math.sqrt(2 * Math.PI) * Math.pow(t, z + 0.5) * Math.exp(-t) * x;
+        }
+
+        // Função de Densidade de Probabilidade (PDF) do Qui-Quadrado
+        function chiSquaredPDF(x, df) {
+            if (x <= 0) return 0;
+            const denominator = Math.pow(2, df / 2) * gamma(df / 2);
+            return (Math.pow(x, df / 2 - 1) * Math.exp(-x / 2)) / denominator;
+        }
+
+        // Inversa da Função de Distribuição Acumulada Normal Standard (Probit)
+        function rationalApproximation(t) {
+            const c = [2.515517, 0.802853, 0.010328];
+            const d = [1.432788, 0.189269, 0.001308];
+            return t - ((c[2]*t + c[1])*t + c[0]) / (((d[2]*t + d[1])*t + d[0])*t + 1.0);
+        }
+
+        function normalInverseCDF(p) {
+            if (p < 0.5) {
+                return -rationalApproximation(Math.sqrt(-2.0 * Math.log(p)));
+            } else {
+                return rationalApproximation(Math.sqrt(-2.0 * Math.log(1.0 - p)));
+            }
+        }
+
+        // Aproximação de Wilson-Hilferty para o valor crítico do Qui-Quadrado
+        function chiSquaredCriticalValue(p, df) {
+            const z = normalInverseCDF(p);
+            const val = df * Math.pow(1 - 2 / (9 * df) + z * Math.sqrt(2 / (9 * df)), 3);
+            return Math.max(0, val);
+        }
+
+        // --- GERENCIAMENTO DA INTERFACE E GRÁFICO ---
+
+        let isBicaudal = true;
+        let myChart = null;
+
+        // Elementos do DOM
+        const btnBicaudal = document.getElementById('btnBicaudal');
+        const btnUnicaudal = document.getElementById('btnUnicaudal');
+        const rangeGL = document.getElementById('rangeGL');
+        const rangeAlpha = document.getElementById('rangeAlpha');
+        const valGL = document.getElementById('valGL');
+        const valAlpha = document.getElementById('valAlpha');
+
+        const valCritInf = document.getElementById('valCritInf');
+        const valCritSup = document.getElementById('valCritSup');
+        const lblCritInfArea = document.getElementById('lblCritInfArea');
+        const lblCritSupArea = document.getElementById('lblCritSupArea');
+        const cardCritInf = document.getElementById('cardCritInf');
+        const lblCritSupTitle = document.getElementById('lblCritSupTitle');
+
+        const inputEstCalculada = document.getElementById('inputEstCalculada');
+        const statusDecisao = document.getElementById('statusDecisao');
+        const statusHeader = document.getElementById('statusHeader');
+        const statusMain = document.getElementById('statusMain');
+        const statusDesc = document.getElementById('statusDesc');
+
+        // Toggle do Tipo de Cauda
+        btnBicaudal.addEventListener('click', () => {
+            isBicaudal = true;
+            btnBicaudal.className = "w-1/2 px-3 py-2 text-xs font-medium rounded-l-md bg-indigo-600 text-white focus:outline-none transition-colors";
+            btnUnicaudal.className = "w-1/2 px-3 py-2 text-xs font-medium rounded-r-md bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 focus:outline-none transition-colors";
+            cardCritInf.style.display = 'block';
+            lblCritSupTitle.textContent = "Região Crítica Superior (Direita)";
+            updateAll();
+        });
+
+        btnUnicaudal.addEventListener('click', () => {
+            isBicaudal = false;
+            btnUnicaudal.className = "w-1/2 px-3 py-2 text-xs font-medium rounded-r-md bg-indigo-600 text-white focus:outline-none transition-colors";
+            btnBicaudal.className = "w-1/2 px-3 py-2 text-xs font-medium rounded-l-md bg-white text-slate-700 border border-slate-200 hover:bg-slate-50 focus:outline-none transition-colors";
+            cardCritInf.style.display = 'none';
+            lblCritSupTitle.textContent = "Região Crítica (Direita)";
+            updateAll();
+        });
+
+        // Eventos de Input
+        rangeGL.addEventListener('input', () => {
+            valGL.textContent = rangeGL.value;
+            updateAll();
+        });
+
+        rangeAlpha.addEventListener('input', () => {
+            valAlpha.textContent = rangeAlpha.value + '%';
+            updateAll();
+        });
+
+        inputEstCalculada.addEventListener('input', () => {
+            updateDecisao();
+        });
+
+        // Função principal para recalcular e atualizar
+        function updateAll() {
+            const df = parseInt(rangeGL.value);
+            const alpha = parseInt(rangeAlpha.value) / 100;
+
+            let cCritInf = 0;
+            let cCritSup = 0;
+
+            if (isBicaudal) {
+                // Cauda esquerda (alpha/2)
+                cCritInf = chiSquaredCriticalValue(alpha / 2, df);
+                // Cauda direita (1 - alpha/2)
+                cCritSup = chiSquaredCriticalValue(1 - (alpha / 2), df);
+
+                valCritInf.textContent = cCritInf.toFixed(3);
+                valCritSup.textContent = cCritSup.toFixed(3);
+                lblCritInfArea.textContent = `\\(\\alpha/2 = ${(alpha/2*100).toFixed(1)}\\%\\)`;
+                lblCritSupArea.textContent = `\\(\\alpha/2 = ${(alpha/2*100).toFixed(1)}\\%\\)`;
+            } else {
+                // Apenas cauda direita (1 - alpha)
+                cCritInf = 0;
+                cCritSup = chiSquaredCriticalValue(1 - alpha, df);
+
+                valCritSup.textContent = cCritSup.toFixed(3);
+                lblCritSupArea.textContent = `\\(\\alpha = ${(alpha*100).toFixed(0)}\\%\\)`;
+            }
+
+            // Atualiza MathJax para renderizar as novas frações LaTeX
+            if (typeof MathJax !== 'undefined' && MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+
+            renderChart(df, cCritInf, cCritSup);
+            updateDecisao();
+        }
+
+        // Regra de decisão em tempo real
+        function updateDecisao() {
+            const calcVal = parseFloat(inputEstCalculada.value);
+            if (isNaN(calcVal)) return;
+
+            const df = parseInt(rangeGL.value);
+            const alpha = parseInt(rangeAlpha.value) / 100;
+            let cCritInf = 0;
+            let cCritSup = 0;
+
+            if (isBicaudal) {
+                cCritInf = chiSquaredCriticalValue(alpha / 2, df);
+                cCritSup = chiSquaredCriticalValue(1 - (alpha / 2), df);
+
+                if (calcVal < cCritInf || calcVal > cCritSup) {
+                    setRejeita("Rejeita H₀", "O valor está fora dos limites aceitáveis de variabilidade.");
+                } else {
+                    setAceita("Aceita H₀", "A variabilidade amostral é estatisticamente estável.");
+                }
+            } else {
+                cCritSup = chiSquaredCriticalValue(1 - alpha, df);
+
+                if (calcVal > cCritSup) {
+                    setRejeita("Rejeita H₀", "O valor é maior do que o limite crítico superior.");
+                } else {
+                    setAceita("Aceita H₀", "A variabilidade está dentro do limite máximo aceito.");
+                }
+            }
+        }
+
+        function setAceita(titulo, subtitulo) {
+            statusDecisao.className = "p-3 rounded-lg text-center flex flex-col justify-center h-full bg-emerald-50 border border-emerald-100 text-emerald-800";
+            statusHeader.className = "text-[10px] font-bold uppercase tracking-wider text-emerald-600";
+            statusMain.className = "text-lg font-extrabold mt-0.5 text-emerald-900";
+            statusDesc.className = "text-xs font-medium text-emerald-700";
+            statusMain.textContent = titulo;
+            statusDesc.textContent = subtitulo;
+        }
+
+        function setRejeita(titulo, subtitulo) {
+            statusDecisao.className = "p-3 rounded-lg text-center flex flex-col justify-center h-full bg-rose-50 border border-rose-100 text-rose-800";
+            statusHeader.className = "text-[10px] font-bold uppercase tracking-wider text-rose-600";
+            statusMain.className = "text-lg font-extrabold mt-0.5 text-rose-900";
+            statusDesc.className = "text-xs font-medium text-rose-700";
+            statusMain.textContent = titulo;
+            statusDesc.textContent = subtitulo;
+        }
+
+        // Renderizador do gráfico em Chart.js
+        function renderChart(df, critInf, critSup) {
+            // Gerar dados para a curva
+            const labels = [];
+            const dataPoints = [];
+            const colors = [];
+
+            // Define o máximo de x no gráfico de forma responsiva ao GL
+            const xMax = Math.max(30, df * 2.5);
+            const step = xMax / 120;
+
+            for (let x = 0; x <= xMax; x += step) {
+                labels.push(x.toFixed(2));
+                const y = chiSquaredPDF(x, df);
+                dataPoints.push({x: x, y: y});
+
+                // Lógica de coloração para as caudas
+                if (isBicaudal) {
+                    if (x < critInf || x > critSup) {
+                        colors.push('rgba(239, 68, 68, 0.45)'); // Cauda vermelha
+                    } else {
+                        colors.push('rgba(99, 102, 241, 0.15)'); // Centro azul suave
+                    }
+                } else {
+                    if (x > critSup) {
+                        colors.push('rgba(239, 68, 68, 0.45)');
+                    } else {
+                        colors.push('rgba(99, 102, 241, 0.15)');
+                    }
+                }
+            }
+
+            // Se o gráfico já existe, destrói para criar um novo limpo
+            if (myChart) {
+                myChart.destroy();
+            }
+
+            const ctx = document.getElementById('chartChi2').getContext('2d');
+            myChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels.map(l => parseFloat(l)),
+                    datasets: [{
+                        label: `Densidade de Probabilidade (gl = ${df})`,
+                        data: dataPoints.map(p => p.y),
+                        borderColor: 'rgb(79, 70, 229)',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        fill: true,
+                        backgroundColor: function(context) {
+                            const index = context.dataIndex;
+                            return colors[index] || 'rgba(99, 102, 241, 0.15)';
+                        },
+                        segment: {
+                            backgroundColor: ctx => {
+                                const index = ctx.p0DataIndex;
+                                return colors[index];
+                            }
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            callbacks: {
+                                label: function(context) {
+                                    return `f(x) = ${context.parsed.y.toFixed(4)}`;
+                                },
+                                title: function(context) {
+                                    return `χ² = ${context[0].label}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            type: 'linear',
+                            min: 0,
+                            max: xMax,
+                            title: {
+                                display: true,
+                                text: 'Valor Qui-Quadrado (χ²)',
+                                color: '#475569',
+                                font: {
+                                    size: 11,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(241, 245, 249, 1)'
+                            }
+                        },
+                        y: {
+                            beginAtZero: true,
+                            title: {
+                                display: true,
+                                text: 'Densidade f(χ²)',
+                                color: '#475569',
+                                font: {
+                                    size: 11,
+                                    weight: 'bold'
+                                }
+                            },
+                            grid: {
+                                color: 'rgba(241, 245, 249, 1)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Inicializa na abertura do arquivo
+        window.onload = function() {
+            updateAll();
+        };
+    </script>
+</body>
+</html>
