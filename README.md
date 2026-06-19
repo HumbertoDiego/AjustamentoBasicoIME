@@ -15,3 +15,15 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Cu
 - [Semana 6](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_2.ipynb): Aprofundamento no MMQ - modelo condicionado
 
 - [Semana 7](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_3.ipynb): Aprofundamento no MMQ - modelo combinado
+
+<!--
+git add * ; git commit -m "aula update"; git push ajustamento main
+jupyter nbconvert --to slides Prospecção.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
+jupyter nbconvert --to slides PreProcessamento.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
+jupyter nbconvert --to slides Mineração.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
+
+reset
+git init
+git remote add ajustamento https://github.com/HumbertoDiego/AjustamentoBasicoIME
+git add * ; git commit -m "aula update"; git push ajustamento main --force
+-->
