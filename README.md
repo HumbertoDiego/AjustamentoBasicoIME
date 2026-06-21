@@ -4,11 +4,15 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Cu
 
 ## SUMÁRIO:
 
-- [Semana 1](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_I_e_II.ipynb): Medidas, observações, incerteza, precisão, acurácia, método dos mínimos quadrados (MMQ), erros e resíduos.
+- [Aula 1](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/01_ajustamento_observacoes.ipynb): Visão geral sobre ajustamento, Medidas, observações
 
-- [Semana 2](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_III.ipynb): Propagação de erros das observações para o(s) modelo/parâmetros ajustado(s)
+- [Aula 2](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/02_minimos_quadrados.ipynb): O método dos mínimos quadrados (MMQ)
 
-- [Semana 3](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_IV.ipynb): Sistemas mal condicionados e como contorná-los
+- [Aula 3](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/03_classificacao_erros.ipynb): Incerteza, precisão, acurácia, erros e resíduos.
+
+- [Aula 4](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/04_erro_prop.ipynb): Propagação de erros das observações para o(s) modelo/parâmetros ajustado(s)
+
+- [Aula 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_IV.ipynb): Sistemas mal condicionados e como contorná-los
 
 - [Semana 4](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_V.ipynb): MMQ com observações ponderadas
 
@@ -22,8 +26,7 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Cu
 
 - [Python 3.12](https://www.python.org/downloads/)
 - [Colab]
-- [VS Code](https://code.visualstudio.com/)
-- [Extensão Jupyter do VS Code](https://marketplace.visualstudio.com/search?term=jupyter&target=VSCode&category=All%20categories&sortBy=Relevance)
+- [VS Code](https://code.visualstudio.com/) e [Extensão Jupyter do VS Code](https://marketplace.visualstudio.com/search?term=jupyter&target=VSCode&category=All%20categories&sortBy=Relevance)
 
 No Windows PowerShell, macOS e Linux (Colab):
 
@@ -31,14 +34,9 @@ No Windows PowerShell, macOS e Linux (Colab):
 pip install -r requirements.txt
 ```
 
-
-
-
 <!--
 git add * ; git commit -m "aula update"; git push ajustamento main
-jupyter nbconvert --to slides Prospecção.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
-jupyter nbconvert --to slides PreProcessamento.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
-jupyter nbconvert --to slides Mineração.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
+jupyter nbconvert --to slides 04_erro_prop.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
 
 reset
 git init
