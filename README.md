@@ -12,7 +12,7 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Cu
 
 - [Aula 4](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/04_erro_prop.ipynb): Propagação de erros das observações para o(s) modelo/parâmetros ajustado(s)
 
-- [Aula 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_IV.ipynb): Sistemas mal condicionados e como contorná-los
+- [Aula 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/05_cond_sistemas.ipynb): Sistemas mal condicionados e como contorná-los
 
 - [Semana 4](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_V.ipynb): MMQ com observações ponderadas
 
@@ -35,6 +35,7 @@ pip install -r requirements.txt
 ```
 
 <!--
+git pull ajustamento main
 git add * ; git commit -m "aula update"; git push ajustamento main
 jupyter nbconvert --to slides 04_erro_prop.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
 
