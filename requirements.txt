@@ -5,4 +5,5 @@ matplotlib>=3.10,<4
 open3d>=0.19,<1
 sympy>=1.14,<2
 wget>=3.2,<4
-nbconvert<7.17,<8
+nbconvert>=7.17,<8
+pandas>=3.0,<3.1
