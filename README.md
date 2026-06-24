@@ -12,9 +12,9 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Cu
 
 - [Aula 4](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/04_erro_prop.ipynb): Propagação de erros das observações para o(s) modelo/parâmetros ajustado(s)
 
-- [Aula 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/05_cond_sistemas.ipynb): Sistemas mal condicionados e como contorná-los
+- [Aula 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/05_mmq_weighted.ipynb): MMQ com observações ponderadas
 
-- [Semana 4](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_V.ipynb): MMQ com observações ponderadas
+- [Aula 6](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/06_cond_sistemas.ipynb): Sistemas mal condicionados e como contorná-los
 
 - [Semana 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_1.ipynb): Aprofundamento no MMQ - modelo paramétrico
 
