@@ -2,11 +2,13 @@
 
 Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Curso de Engenharia Cartográfica do Instituto Militar de Engenharia - Rio de Janeiro/RJ
 
+<img src="media/imgs/AjustBasico.png">
+
 ## SUMÁRIO:
 
-- [Aula 1](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/01_ajustamento_observacoes.ipynb): Visão geral sobre ajustamento, Medidas, observações
+- [Aula 1](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/01_ajustamento_observacoes.ipynb): Visão geral sobre ajustamento, medidas, observações
 
-- [Aula 2](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/02_minimos_quadrados.ipynb): O método dos mínimos quadrados (MMQ)
+- [Aula 2](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/02_minimos_quadrados.ipynb): O Método dos Mínimos Quadrados (MMQ)
 
 - [Aula 3](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/03_classificacao_erros.ipynb): Incerteza, precisão, acurácia, erros e resíduos.
 
@@ -16,11 +18,11 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Cu
 
 - [Aula 6](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/06_cond_sistemas.ipynb): Sistemas mal condicionados e como contorná-los
 
-- [Semana 5](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_1.ipynb): Aprofundamento no MMQ - modelo paramétrico
+- [Aula 7](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/07_metodos.ipynb): Revisão MMQ - modelo paramétrico
 
-- [Semana 6](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_2.ipynb): Aprofundamento no MMQ - modelo condicionado
+- [Aula 8](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_2.ipynb): Apresentação modelo condicionado
 
-- [Semana 7](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_3.ipynb): Aprofundamento no MMQ - modelo combinado
+- [Aula 9](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_3.ipynb): Apresentação modelo combinado
 
 ## REQUISITOS:
 
