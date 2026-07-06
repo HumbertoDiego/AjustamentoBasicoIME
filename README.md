@@ -20,9 +20,9 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Cu
 
 - [Aula 7](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/07_metodos.ipynb): Revisão MMQ - modelo paramétrico
 
-- [Aula 8](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_2.ipynb): Apresentação modelo condicionado
+- [Aula 8](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/08_metodo_condicionado.ipynb): Apresentação modelo condicionado
 
-- [Aula 9](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/UD_VI_parte_3.ipynb): Apresentação modelo combinado
+- [Aula 9](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/09_metodo_combinado.ipynb): Apresentação modelo combinado
 
 ## REQUISITOS:
 
