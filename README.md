@@ -22,7 +22,7 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3º ano do Cu
 
 - [Aula 8](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/08_metodo_condicionado.ipynb): Apresentação modelo condicionado
 
-- [Aula 9](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/09_metodo_combinado.ipynb): Apresentação modelo combinado.
+- [Aula 9](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/09_metodo_combinado.ipynb): Apresentação modelo combinado
 
 - [VE Prática](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/VE_2.ipynb): Aplicações em Fotogrametria Digital
 
