@@ -24,7 +24,7 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3º ano do Cu
 
 - [Aula 9](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/09_metodo_combinado.ipynb): Apresentação modelo combinado
 
-- [VE Prática](https://github.com/HumbertoDiego/SFMTools/blob/main/fototriangula%C3%A7%C3%A3o.ipynb): Aplicação prática em Aerofotogrametria
+- [VE Prática](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/fototriangula%C3%A7%C3%A3o.ipynb): Aplicação prática em Aerofotogrametria
 
 - [Próximo](https://github.com/HumbertoDiego/AjustamentoAvancadoIME): Ajustamento Avançado
 
