@@ -16,3 +16,6 @@ wheels/
 .ipynb_checkpoints/
 
 *.html
+
+thirdparty/
+aux_data/
