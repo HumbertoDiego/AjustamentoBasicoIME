@@ -1,6 +1,6 @@
 # Ajustamento Básico IME
 
-Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Curso de Engenharia Cartográfica do Instituto Militar de Engenharia - Rio de Janeiro/RJ
+Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3º ano do Curso de Engenharia Cartográfica do Instituto Militar de Engenharia - Rio de Janeiro/RJ
 
 <img src="media/imgs/AjustBasico.png">
 
@@ -10,7 +10,7 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3ª ano do Cu
 
 - [Aula 2](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/02_minimos_quadrados.ipynb): O Método dos Mínimos Quadrados (MMQ)
 
-- [Aula 3](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/03_classificacao_erros.ipynb): Incerteza, precisão, acurácia, erros e resíduos.
+- [Aula 3](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/03_classificacao_erros.ipynb): Incerteza, precisão, acurácia, erros e resíduos
 
 - [Aula 4](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/04_erro_prop.ipynb): Propagação de erros das observações para o(s) modelo/parâmetros ajustado(s)
 
