@@ -18,11 +18,11 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3º ano do Cu
 
 - [Aula 6](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/06_cond_sistemas.ipynb): Sistemas mal condicionados e como contorná-los
 
-- [Aula 7](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/07_metodos.ipynb): Revisão MMQ - modelo paramétrico
+- [Aula 7](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/07_modelos.ipynb): Revisão MMQ - modelo paramétrico
 
-- [Aula 8](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/08_metodo_condicionado.ipynb): Apresentação modelo condicionado
+- [Aula 8](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/08_modelo_condicionado.ipynb): Apresentação modelo condicionado
 
-- [Aula 9](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/09_metodo_combinado.ipynb): Apresentação modelo combinado
+- [Aula 9](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/09_modelo_combinado.ipynb): Apresentação modelo combinado
 
 - [VE Prática](https://github.com/HumbertoDiego/AjustamentoBasicoIME/blob/main/fototriangula%C3%A7%C3%A3o.ipynb): Aplicação prática em Aerofotogrametria
 
