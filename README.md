@@ -28,8 +28,6 @@ Aulas de Ajustamento Básico (Inverse Problems) ministradas para o 3º ano do Cu
 
 - [Próximo](https://github.com/HumbertoDiego/AjustamentoAvancadoIME): Ajustamento Avançado
 
-
-
 ## REQUISITOS:
 
 - [Python 3.12](https://www.python.org/downloads/)
@@ -41,6 +39,11 @@ No Windows PowerShell, macOS e Linux (Colab):
 ```powershell
 pip install -r requirements.txt
 ```
+## REFERÊNCIAS:
+
+- Camil Gemael, Alvaro Muriel Lima Machado, Romualdo Wandresen (2015). *Introdução ao Ajustamento de Observações: Aplicações Geodésicas* (2ª ed.), Curitiba, Ed. UFPR;
+- Ghilani, C. D. (2017). *Adjustment computations: Spatial data analysis* (6th ed.). Wiley;
+- Gilbert Strang, Kai Borre (1997). *Linear Algebra, Geodesy, and GPS*. Wellesley-Cambridge Press.
 
 <!--
 git pull ajustamento main
