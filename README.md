@@ -48,7 +48,7 @@ pip install -r requirements.txt
 <!--
 git pull ajustamento main
 git add * ; git commit -m "aula update"; git push ajustamento main
-jupyter nbconvert --to slides 09_modelo_combinado.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
+jupyter nbconvert --to slides 01_ajustamento_observacoes.ipynb --TagRemovePreprocessor.remove_input_tags="hide_input" --SlidesExporter.reveal_scroll=True --post serve
 
 reset
 git init
